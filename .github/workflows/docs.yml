@@ -11,10 +11,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Build Docs
-      uses: borales/actions-yarn@v2.0.0
+    - name: Install Node
+      uses: actions/setup-node@v2
       with:
-        cmd: run docs
+        node-version: '15.x'
+        registry-url: 'https://registry.npmjs.org'
+
+    - run: yarn
+    - run: yarn run docs
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.0
