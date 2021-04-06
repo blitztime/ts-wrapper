@@ -8,17 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
-    - name: Set up Node.js 15.x
-      uses: actions/setup-node@v1
+    - name: Build Docs
+      uses: borales/actions-yarn@v2.0.0
       with:
-        node-version: '15.x'
-
-    - name: Install dependencies and build
-      run: |
-        npm install yarn
-        npx yarn run docs
+        cmd: run docs
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.0
