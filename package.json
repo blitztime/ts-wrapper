@@ -1,0 +1,24 @@
+{
+  "name": "blitztime",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Artemis <artemisdev.xyz>",
+  "browser": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "yarn tsc --build tsconfig.json",
+    "docs": "typedoc --out docs src/index.ts --theme minimal --highlightTheme solarized-light --readme intro.md"
+  },
+  "dependencies": {
+    "@types/luxon": "^1.26.3",
+    "axios": "^0.21.1",
+    "luxon": "^1.26.0",
+    "socket.io-client": "^4.0.1",
+    "yarn": "^1.22.10"
+  },
+  "devDependencies": {
+    "@yarnpkg/pnpify": "^2.4.0",
+    "typedoc": "^0.20.35",
+    "typescript": "^4.2.3"
+  }
+}
