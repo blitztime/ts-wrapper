@@ -5,5 +5,7 @@ This is a wrapper for the Blitztime API, written in TypeScript. Docs are availab
 ## Installing
 
 Yarn: `yarn add blitztime`
+
 NPM: `npm install blitztime`
+
 CDN: `https://cdn.jsdelivr.net/npm/blitztime@latest/dist/index.js`
