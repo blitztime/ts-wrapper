@@ -5,7 +5,8 @@ import {
     AppStats,
     SocketCredentials,
     StageSettings,
-    Timer
+    Timer,
+    TimerJoinSide
 } from "./types";
 
 interface JsonObject extends Record<string, Json> {}
@@ -49,8 +50,11 @@ export class HttpClient {
     }
 
     /** Join the away side of a timer. */
-    async joinTimer(id: number): Promise<SocketCredentials> {
-        const response = await this._request('POST', `/timer/${id}/away`);
+    async joinTimer(
+        id: number,
+        side: TimerJoinSide
+    ): Promise<SocketCredentials> {
+        const response = await this._request('POST', `/timer/${id}/${side}`);
         return {
             timer: response.timer,
             token: response.token
@@ -58,11 +62,17 @@ export class HttpClient {
     }
 
     /** Create a new timer with given settings. */
-    async createTimer(settings: StageSettings[]): Promise<SocketCredentials> {
+    async createTimer(
+        settings: StageSettings[],
+        asManager: boolean = false
+    ): Promise<SocketCredentials> {
         const rawSettings = Array.prototype.map(
             stage => stage.dump(), settings
         );
-        const response = await this._request('POST', '/timer', rawSettings);
+        const response = await this._request('POST', '/timer', {
+            stages: rawSettings,
+            as_manager: asManager
+        });
         return {
             timer: response.timer,
             token: response.token

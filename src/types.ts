@@ -13,11 +13,10 @@ export function loadDuration(seconds: number): Duration {
 export class Timer {
     id: number;
     turnNumber: number;
-    hasAwayJoined: boolean;
     turnStartedAt: DateTime | null;
     startedAt: DateTime | null;
     hasEnded: boolean;
-    home: TimerSide;
+    home: TimerSide | null;
     away: TimerSide | null;
     settings: StageSettings[];
     observers: number;
@@ -25,11 +24,10 @@ export class Timer {
     constructor(data: Record<string, any>) {
         this.id = data.id;
         this.turnNumber = data.turn_number;
-        this.hasAwayJoined = data.has_away_joined;
         this.turnStartedAt = data.turn_started_at;
         this.startedAt = loadDateTime(data.started_at);
         this.hasEnded = data.has_ended;
-        this.home = new TimerSide(data.home, this);
+        this.home = data.home ? new TimerSide(data.home, this) : null;
         this.away = data.away ? new TimerSide(data.away, this) : null;
         this.settings = Array.prototype.map(
             settings => StageSettings.load(settings),
@@ -101,6 +99,12 @@ export class TimerSide {
             .plus(this.totalTimeLastTurn)
             .plus(this.timer.stageSettings.fixedTimePerTurn);
     }
+}
+
+/** A side of a timer to join. */
+export enum TimerJoinSide {
+    HOME = 0,
+    AWAY = 1
 }
 
 /** Settings for one stage of a timer. */

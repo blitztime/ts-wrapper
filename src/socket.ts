@@ -81,6 +81,11 @@ export class TimerConnection {
         this.socket.emit('opponent_timed_out');
     }
 
+    /** Add time to both player's clocks. */
+    addTime(seconds: number) {
+        this.socket.emit('add_time', seconds);
+    }
+
     _onStateUpdate(rawState: Record<string, any>) {
         this.state = new Timer(rawState);
         this._triggerEvent('state_update', this.state);

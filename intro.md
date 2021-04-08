@@ -37,6 +37,8 @@ const stage2 = StageSettings.create(
 )
 const creds = await client.createTimer([stage1, stage2]);
 ```
+`createTimer` accepts a second parameter, `asManager`, which is a `boolean`. ``false`` (default), you will be added to the game as the host, and the token returned will be a player token. Otherwise, no host will be added and the token returned will be a manager token.
+
 See "Connecting to a timer" below for how to use `creds`.
 
 ## Joining a timer
@@ -75,6 +77,8 @@ The following methods can be used to send events:
 - `TimerConnection#opponentTimedOut` (called by the non-playing player when their opponent times out).
 
 None of these methods accept paremeters, and they cannot be called by observers.
+
+Additionally, `TimerConnection#addTime` can be called by a manager to add time to both clocks. It accepts one parameter, the number of seconds to add.
 
 ## Listening for events
 
