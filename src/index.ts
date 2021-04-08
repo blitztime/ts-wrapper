@@ -7,5 +7,6 @@ export {
     SocketCredentials,
     StageSettings,
     Timer,
+    TimerJoinSide,
     TimerSide
 } from './types';
