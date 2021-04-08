@@ -2772,6 +2772,7 @@ img {
 <span style="color: #657B83">)</span>
 <span style="color: #073642">const</span><span style="color: #657B83"> </span><span style="color: #268BD2">creds</span><span style="color: #657B83"> </span><span style="color: #859900">=</span><span style="color: #657B83"> </span><span style="color: #859900">await</span><span style="color: #657B83"> </span><span style="color: #268BD2">client</span><span style="color: #657B83">.</span><span style="color: #268BD2">createTimer</span><span style="color: #657B83">([</span><span style="color: #268BD2">stage1</span><span style="color: #657B83">, </span><span style="color: #268BD2">stage2</span><span style="color: #657B83">]);</span>
 </code></pre>
+			<p><code>createTimer</code> accepts a second parameter, <code>asManager</code>, which is a <code>boolean</code>. <code>false</code> (default), you will be added to the game as the host, and the token returned will be a player token. Otherwise, no host will be added and the token returned will be a manager token.</p>
 			<p>See &quot;Connecting to a timer&quot; below for how to use <code>creds</code>.</p>
 			<a href="#joining-a-timer" id="joining-a-timer" style="color: inherit; text-decoration: none;">
 				<h2>Joining a timer</h2>
@@ -2807,6 +2808,7 @@ img {
 				<li><code>TimerConnection#opponentTimedOut</code> (called by the non-playing player when their opponent times out).</li>
 			</ul>
 			<p>None of these methods accept paremeters, and they cannot be called by observers.</p>
+			<p>Additionally, <code>TimerConnection#addTime</code> can be called by a manager to add time to both clocks. It accepts one parameter, the number of seconds to add.</p>
 			<a href="#listening-for-events" id="listening-for-events" style="color: inherit; text-decoration: none;">
 				<h2>Listening for events</h2>
 			</a>
@@ -2869,7 +2871,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Event<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;connect&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;connect_error&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;disconnect&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;state_update&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;error&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/blitztime/ts-wrapper/blob/93e5791/src/socket.ts#L6">src/socket.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/blitztime/ts-wrapper/blob/81e31c9/src/socket.ts#L6">src/socket.ts:6</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
