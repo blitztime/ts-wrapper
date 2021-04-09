@@ -28,7 +28,9 @@ export class TimerConnection {
         } else {
             this.observer = true;
         }
-        this.socket = io(apiUrl, { extraHeaders: headers });
+        this.socket = io(apiUrl, {
+            extraHeaders: headers, autoConnect: false
+        });
         const specialEvents: EventName[] = [
             'connect', 'connect_error', 'disconnect'];
         for (const event of specialEvents) {
@@ -38,6 +40,20 @@ export class TimerConnection {
         this.socket.on('error', this._onError);
         this.state = null;
         this.listeners = new Map();
+    }
+
+    /** Open the connection. */
+    connect() {
+        if (!this.socket.connected) {
+            this.socket.connect();
+        }
+    }
+
+    /** Close the connection. */
+    disconnect() {
+        if (this.socket.connected) {
+            this.socket.disconnect();
+        }
     }
 
     /** Add a listener for an event. */

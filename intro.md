@@ -63,10 +63,12 @@ console.log(`Number of people playing or observing now: ${stats.connected}`);
 You can connect to a timer, and create a Socket.IO client, like so:
 ```js
 const socket = new TimerConnection(creds, 'https://api.blitz.red');
+socket.connect();
 ```
 `creds` should be an object conforming to the `SocketCredentials` interface, as returned by `HttpClient#createTimer` or `HttpClient#joinTimer`. Alternatively, to observe a game, create an object with `timer` set to the ID of the timer:
 ```js
 const socket = new TimerConenction({ timer: 494 }, 'https://api.blitz.red');
+socket.connect();
 ```
 
 ## Sending events
