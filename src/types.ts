@@ -143,9 +143,10 @@ export class StageSettings {
     dump(): Record<string, any> {
         return {
             start_turn: this.startTurn,
-            seconds_fixed_per_turn: this.fixedTimePerTurn,
-            seconds_incremement_per_turn: this.incrementPerTurn,
-            inital_seconds: this.initialTime
+            seconds_fixed_per_turn: this.fixedTimePerTurn.toMillis() / 1000,
+            seconds_incremement_per_turn:
+                this.incrementPerTurn.toMillis() / 1000,
+            inital_seconds: this.initialTime.toMillis() / 1000
         }
     }
 }
