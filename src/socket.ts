@@ -36,8 +36,13 @@ export class TimerConnection {
         for (const event of specialEvents) {
             this.socket.on(event, () => this._triggerEvent(event, {}));
         }
-        this.socket.on('state', this._onStateUpdate);
-        this.socket.on('error', this._onError);
+        const timerConn = this;
+        this.socket.on('state', state => {
+            timerConn._onStateUpdate(state)
+        });
+        this.socket.on('error', error => {
+            timerConn._onError(error)
+        });
         this.state = null;
         this.listeners = new Map();
     }
