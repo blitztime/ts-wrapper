@@ -139,7 +139,7 @@ export class StageSettings {
             data.start_turn,
             loadDuration(data.seconds_fixed_per_turn),
             loadDuration(data.seconds_incremement_per_turn),
-            loadDuration(data.inital_seconds)
+            loadDuration(data.initial_seconds)
         );
     }
 
