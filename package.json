@@ -1,6 +1,6 @@
 {
   "name": "blitztime",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "license": "MIT",
   "author": "Artemis <artemisdev.xyz>",
   "browser": "dist/index.js",

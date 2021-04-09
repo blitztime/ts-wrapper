@@ -145,7 +145,7 @@ export class StageSettings {
             seconds_fixed_per_turn: this.fixedTimePerTurn.toMillis() / 1000,
             seconds_incremement_per_turn:
                 this.incrementPerTurn.toMillis() / 1000,
-            inital_seconds: this.initialTime.toMillis() / 1000
+            initial_seconds: this.initialTime.toMillis() / 1000
         }
     }
 }
