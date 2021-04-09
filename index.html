@@ -2797,9 +2797,11 @@ img {
 			</a>
 			<p>You can connect to a timer, and create a Socket.IO client, like so:</p>
 			<pre><code class="language-js"><span style="color: #073642">const</span><span style="color: #657B83"> </span><span style="color: #268BD2">socket</span><span style="color: #657B83"> </span><span style="color: #859900">=</span><span style="color: #657B83"> </span><span style="color: #859900">new</span><span style="color: #657B83"> </span><span style="color: #268BD2">TimerConnection</span><span style="color: #657B83">(</span><span style="color: #268BD2">creds</span><span style="color: #657B83">, </span><span style="color: #2AA198">&#039;https://api.blitz.red&#039;</span><span style="color: #657B83">);</span>
+<span style="color: #268BD2">socket</span><span style="color: #657B83">.</span><span style="color: #268BD2">connect</span><span style="color: #657B83">();</span>
 </code></pre>
 			<p><code>creds</code> should be an object conforming to the <code>SocketCredentials</code> interface, as returned by <code>HttpClient#createTimer</code> or <code>HttpClient#joinTimer</code>. Alternatively, to observe a game, create an object with <code>timer</code> set to the ID of the timer:</p>
 			<pre><code class="language-js"><span style="color: #073642">const</span><span style="color: #657B83"> </span><span style="color: #268BD2">socket</span><span style="color: #657B83"> </span><span style="color: #859900">=</span><span style="color: #657B83"> </span><span style="color: #859900">new</span><span style="color: #657B83"> </span><span style="color: #268BD2">TimerConenction</span><span style="color: #657B83">({ timer: </span><span style="color: #D33682">494</span><span style="color: #657B83"> }, </span><span style="color: #2AA198">&#039;https://api.blitz.red&#039;</span><span style="color: #657B83">);</span>
+<span style="color: #268BD2">socket</span><span style="color: #657B83">.</span><span style="color: #268BD2">connect</span><span style="color: #657B83">();</span>
 </code></pre>
 			<a href="#sending-events" id="sending-events" style="color: inherit; text-decoration: none;">
 				<h2>Sending events</h2>
@@ -2880,7 +2882,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Event<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;connect&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;connect_error&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;disconnect&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;state_update&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;error&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/blitztime/ts-wrapper/blob/0e1842a/src/socket.ts#L6">src/socket.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/blitztime/ts-wrapper/blob/080e524/src/socket.ts#L6">src/socket.ts:6</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
