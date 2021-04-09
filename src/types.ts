@@ -41,8 +41,9 @@ export class Timer {
 
     /** Get the settings for the current stage. */
     get stageSettings(): StageSettings {
+        const turn = this.turnNumber >= 0 ? this.turnNumber / 2 :  0;
         for (const stage of this.settings.slice().reverse()) {
-            if (stage.startTurn <= this.turnNumber) {
+            if (stage.startTurn <= turn) {
                 return stage;
             }
         }
@@ -66,7 +67,9 @@ export class TimerSide {
 
     /** Get the time remaining on the game clock right now. */
     get totalTimeRemaining(): Duration {
-        if (!this.timer.turnStartedAt) return Duration.fromMillis(0);
+        if (!this.timer.turnStartedAt) {
+            return this.timer.stageSettings.initialTime;
+        }
         let timeSpent = Interval.fromDateTimes(
             this.timer.turnStartedAt,
             DateTime.now().toUTC()
@@ -80,7 +83,9 @@ export class TimerSide {
 
     /** Get the time remaining on the turn clock right now. */
     get turnTimeRemaining(): Duration {
-        if (!this.timer.turnStartedAt) return Duration.fromMillis(0);
+        if (!this.timer.turnStartedAt) {
+            return this.timer.stageSettings.fixedTimePerTurn;
+        }
         const timeSpent = Interval.fromDateTimes(
             this.timer.turnStartedAt,
             DateTime.now().toUTC()
