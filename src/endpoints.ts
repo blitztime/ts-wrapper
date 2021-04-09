@@ -66,9 +66,7 @@ export class HttpClient {
         settings: StageSettings[],
         asManager: boolean = false
     ): Promise<SocketCredentials> {
-        const rawSettings = Array.prototype.map(
-            stage => stage.dump(), settings
-        );
+        const rawSettings = settings.map(stage => stage.dump());
         const response = await this._request('POST', '/timer', {
             stages: rawSettings,
             as_manager: asManager

@@ -29,9 +29,8 @@ export class Timer {
         this.hasEnded = data.has_ended;
         this.home = data.home ? new TimerSide(data.home, this) : null;
         this.away = data.away ? new TimerSide(data.away, this) : null;
-        this.settings = Array.prototype.map(
-            settings => StageSettings.load(settings),
-            data.settings
+        this.settings = data.settings.map(
+            (settings: Record<string, any>) => StageSettings.load(settings)
         );
         this.observers = data.observers;
     }

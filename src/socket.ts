@@ -97,9 +97,8 @@ export class TimerConnection {
     }
 
     async _triggerEvent(name: EventName, data: Record<string, any>) {
-        await Promise.all(Array.prototype.map(
-            listener => listener(data),
-            this.listeners.get(name)
+        await Promise.all((this.listeners.get(name) || []).map(
+            listener => listener(data)
         ));
     }
 }
