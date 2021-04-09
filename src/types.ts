@@ -1,13 +1,15 @@
 /** Types returned or accepted by the server. */
 import { DateTime, Duration, Interval } from 'luxon';
 
-export function loadDateTime(seconds: number | null): DateTime | null {
-    if (seconds === null) return null;
+export function loadDateTime(seconds: number): DateTime {
     return DateTime.fromSeconds(seconds).toUTC();
 }
 
-export function loadDuration(seconds: number | null): Duration | null {
-    if (seconds === null) return null;
+export function loadOptionalDateTime(seconds: number | null): DateTime | null {
+    return seconds === null ? null : loadDateTime(seconds);
+}
+
+export function loadDuration(seconds: number): Duration {
     return Duration.fromMillis(seconds * 1000);
 }
 
@@ -26,8 +28,8 @@ export class Timer {
     constructor(data: Record<string, any>) {
         this.id = data.id;
         this.turnNumber = data.turn_number;
-        this.turnStartedAt = loadDateTime(data.turn_started_at);
-        this.startedAt = loadDateTime(data.started_at);
+        this.turnStartedAt = loadOptionalDateTime(data.turn_started_at);
+        this.startedAt = loadOptionalDateTime(data.started_at);
         this.hasEnded = data.has_ended;
         this.home = data.home ? new TimerSide(data.home, this) : null;
         this.away = data.away ? new TimerSide(data.away, this) : null;
