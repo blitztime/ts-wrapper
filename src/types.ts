@@ -66,7 +66,7 @@ export class TimerSide {
     }
 
     /** Get the time remaining on the game clock right now. */
-    get totalTimeRemaining(): Duration {
+    totalTimeRemaining(): Duration {
         if (!this.timer.turnStartedAt) {
             return this.timer.stageSettings.initialTime;
         }
@@ -82,7 +82,7 @@ export class TimerSide {
     }
 
     /** Get the time remaining on the turn clock right now. */
-    get turnTimeRemaining(): Duration {
+    turnTimeRemaining(): Duration {
         if (!this.timer.turnStartedAt) {
             return this.timer.stageSettings.fixedTimePerTurn;
         }
@@ -99,7 +99,7 @@ export class TimerSide {
     }
 
     /** Get the time at which this player will time out. */
-    get timesOutAt(): DateTime {
+    timesOutAt(): DateTime {
         if (!this.timer.turnStartedAt) {
             return DateTime.fromSeconds(Number.MAX_SAFE_INTEGER);
         }
