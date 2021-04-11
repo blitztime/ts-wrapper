@@ -70,12 +70,15 @@ export class TimerSide {
         if (!this.timer.turnStartedAt) {
             return this.timer.stageSettings.initialTime;
         }
+        if (!this.isTurn) {
+            return this.totalTimeLastTurn;
+        }
         let timeSpent = Interval.fromDateTimes(
             this.timer.turnStartedAt,
             DateTime.now().toUTC()
         ).toDuration();
         timeSpent = timeSpent.minus(this.timer.stageSettings.fixedTimePerTurn);
-        if (timeSpent > Duration.fromMillis(0)) {
+        if (timeSpent < Duration.fromMillis(0)) {
             return this.totalTimeLastTurn;
         }
         return this.totalTimeLastTurn.minus(timeSpent);
@@ -83,7 +86,7 @@ export class TimerSide {
 
     /** Get the time remaining on the turn clock right now. */
     turnTimeRemaining(): Duration {
-        if (!this.timer.turnStartedAt) {
+        if (!this.timer.turnStartedAt || !this.isTurn) {
             return this.timer.stageSettings.fixedTimePerTurn;
         }
         const timeSpent = Interval.fromDateTimes(
