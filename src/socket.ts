@@ -102,6 +102,11 @@ export class TimerConnection {
         this.socket.emit('opponent_timed_out');
     }
 
+    /** End the game before the timer runs out. */
+    endGame() {
+        this.socket.emit('end_game');
+    }
+
     /** Add time to both player's clocks. */
     addTime(seconds: number) {
         this.socket.emit('add_time', seconds);

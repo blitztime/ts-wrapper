@@ -77,6 +77,7 @@ The following methods can be used to send events:
 - `TimerConnection#startTimer` (called by host to start the timer once away has joined).
 - `TimerConnection#endTurn` (called by the currently playing player to end their turn).
 - `TimerConnection#opponentTimedOut` (called by the non-playing player when their opponent times out).
+- `TimerConnection#endGame` (called by any player or manager to end the game).
 
 None of these methods accept paremeters, and they cannot be called by observers.
 

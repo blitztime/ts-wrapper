@@ -13,6 +13,14 @@ export function loadDuration(seconds: number): Duration {
     return Duration.fromMillis(seconds * 1000);
 }
 
+/** The position of a user in a game. */
+export enum UserPosition {
+    OBSERVER = -2,
+    MANAGER = -1,
+    HOME = 0,
+    AWAY = 1,
+}
+
 /** The state of a timer. */
 export class Timer {
     id: number;
@@ -20,6 +28,7 @@ export class Timer {
     turnStartedAt: DateTime | null;
     startedAt: DateTime | null;
     hasEnded: boolean;
+    endReporter: UserPosition | null;
     home: TimerSide | null;
     away: TimerSide | null;
     settings: StageSettings[];
@@ -31,6 +40,7 @@ export class Timer {
         this.turnStartedAt = loadOptionalDateTime(data.turn_started_at);
         this.startedAt = loadOptionalDateTime(data.started_at);
         this.hasEnded = data.has_ended;
+        this.endReporter = data.end_reporter;
         this.home = data.home ? new TimerSide(data.home, this) : null;
         this.away = data.away ? new TimerSide(data.away, this) : null;
         this.settings = data.settings.map(
