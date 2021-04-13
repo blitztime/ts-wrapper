@@ -97,9 +97,9 @@ export class TimerConnection {
         this.socket.emit('end_turn');
     }
 
-    /** Notify the server that the player's opponent has timed out. */
-    opponentTimedOut() {
-        this.socket.emit('opponent_timed_out');
+    /** Notify the server that the current player has timed out. */
+    timeout() {
+        this.socket.emit('timeout');
     }
 
     /** End the game before the timer runs out. */

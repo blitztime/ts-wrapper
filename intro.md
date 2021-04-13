@@ -74,14 +74,16 @@ socket.connect();
 ## Sending events
 
 The following methods can be used to send events:
-- `TimerConnection#startTimer` (called by host to start the timer once away has joined).
-- `TimerConnection#endTurn` (called by the currently playing player to end their turn).
-- `TimerConnection#opponentTimedOut` (called by the non-playing player when their opponent times out).
-- `TimerConnection#endGame` (called by any player or manager to end the game).
+- `TimerConnection#startTimer` (start the timer once the host has joined).
+- `TimerConnection#endTurn` (end the current player's turn).
+- `TimerConnection#timeout` (notify the server that the current player has timed out).
+- `TimerConnection#endGame` (end the game).
 
-None of these methods accept paremeters, and they cannot be called by observers.
+None of these methods accept paremeters.
 
 Additionally, `TimerConnection#addTime` can be called by a manager to add time to both clocks. It accepts one parameter, the number of seconds to add.
+
+See [the API docs](https://blitztime.github.io/server/events.html#client-sent-events) for information on when these can be sent, and by whom.
 
 ## Listening for events
 

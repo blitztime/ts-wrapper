@@ -33,6 +33,7 @@ export class Timer {
     away: TimerSide | null;
     settings: StageSettings[];
     observers: number;
+    managed: boolean;
 
     constructor(data: Record<string, any>) {
         this.id = data.id;
@@ -47,6 +48,7 @@ export class Timer {
             (settings: Record<string, any>) => StageSettings.load(settings)
         );
         this.observers = data.observers;
+        this.managed = data.managed;
     }
 
     /** Get the settings for the current stage. */
