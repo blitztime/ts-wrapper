@@ -2808,13 +2808,14 @@ img {
 			</a>
 			<p>The following methods can be used to send events:</p>
 			<ul>
-				<li><code>TimerConnection#startTimer</code> (called by host to start the timer once away has joined).</li>
-				<li><code>TimerConnection#endTurn</code> (called by the currently playing player to end their turn).</li>
-				<li><code>TimerConnection#opponentTimedOut</code> (called by the non-playing player when their opponent times out).</li>
-				<li><code>TimerConnection#endGame</code> (called by any player or manager to end the game).</li>
+				<li><code>TimerConnection#startTimer</code> (start the timer once the host has joined).</li>
+				<li><code>TimerConnection#endTurn</code> (end the current player&#39;s turn).</li>
+				<li><code>TimerConnection#timeout</code> (notify the server that the current player has timed out).</li>
+				<li><code>TimerConnection#endGame</code> (end the game).</li>
 			</ul>
-			<p>None of these methods accept paremeters, and they cannot be called by observers.</p>
+			<p>None of these methods accept paremeters.</p>
 			<p>Additionally, <code>TimerConnection#addTime</code> can be called by a manager to add time to both clocks. It accepts one parameter, the number of seconds to add.</p>
+			<p>See <a href="https://blitztime.github.io/server/events.html#client-sent-events">the API docs</a> for information on when these can be sent, and by whom.</p>
 			<a href="#listening-for-events" id="listening-for-events" style="color: inherit; text-decoration: none;">
 				<h2>Listening for events</h2>
 			</a>
@@ -2883,7 +2884,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Event<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;connect&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;connect_error&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;disconnect&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;state_update&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;error&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/blitztime/ts-wrapper/blob/3eabe10/src/socket.ts#L6">src/socket.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/blitztime/ts-wrapper/blob/bae4d76/src/socket.ts#L6">src/socket.ts:6</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
